@@ -1,0 +1,35 @@
+section#how.section
+  .container
+    h2 How to use Beetbox?
+    h3 Requirements
+    ul
+      li
+        a(href='https://getcomposer.org/download/') Composer
+      li
+        a(href='https://www.vagrantup.com/') Vagrant
+          |  >= 1.8
+      li
+        a(href='https://www.virtualbox.org/') VirtualBox
+    ul
+      li
+        a(href='https://github.com/cogitatio/vagrant-hostsupdater') Vagrant Hostsupdater
+    pre vagrant plugin install vagrant-hostsupdater
+    ul
+      li
+        a(href='https://github.com/oscar-stack/vagrant-auto_network') Vagrant Auto-network
+    pre vagrant plugin install vagrant-hostsupdater
+    h3 Quickstart
+    pre
+      | composer require --dev beet/box
+      | vagrant up
+    p This will automatically generate a Vagrantfile and the .beetbox directory, which will contain a config.yml file used to configure overrides.
+    p You can see some examples in&nbsp;
+      kbd
+        a(href='https://github.com/beetboxvm/beetbox/blob/master/.beetbox/config.yml') config.yml
+    h3 Updating
+    pre composer update beet/box
+    p Version constraints should automatically keep you to the same minor release.&nbsp;
+      kbd (0.0.x)
+      |  However, you may need to update your configuation when upgrading minor releases.&nbsp;
+      kbd (0.x.0)
+      |  See the release notes for more information.

@@ -1,0 +1,48 @@
+{
+  "name": "BeetBoxWebInfo",
+  "version": "0.1.0",
+  "description": "Web page with information about beetbox VM project",
+  "main": "index.html",
+  "dependencies": {},
+  "devDependencies": {
+    "chokidar": "^1.6.1",
+    "coffee-script": "^1.12.2",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-connect": "^5.0.0",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-notify": "^2.2.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-pug": "^3.2.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.4.0",
+    "gulp-uglifyjs": "^0.6.2"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/integratedexperts/beetbox-web.git"
+  },
+  "contributors": [
+    {
+      "name": "Alex Skrypnyk",
+      "email": "alex.designworks@gmail.com",
+      "company": "IntegratedExperts",
+      "url": "https://github.com/alexdesignworks"
+    },
+    {
+      "name": "Alexander Sharkov",
+      "email": "blade.didan@gmail.com",
+      "company": "IntegratedExperts",
+      "url": "https://github.com/bladeaweb"
+    }
+  ],
+  "license": "GPL-2.0+",
+  "bugs": {
+    "url": "https://github.com/integratedexperts/beetbox-web/issues"
+  },
+  "homepage": "https://github.com/integratedexperts/beetbox-web"
+}

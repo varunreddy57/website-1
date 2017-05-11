@@ -1,0 +1,43 @@
+/// Global.
+$default-line-height: 1.33;
+$default-font-size: 1rem;
+$default-font-family: 'Droid Sans', sans-serif;
+$default-letter-spacing: 1.5px;
+
+// Font sizes
+$font-size-xs: 12px;
+$font-size-s: 14px;
+$font-size-m: 16px;
+
+$theme-h1: 30px;
+$theme-h2: 24px;
+$theme-h3: 18px;
+$theme-h4: 16px;
+$theme-h5: 14px;
+$theme-h6: 12px;
+
+/// Indents.
+$default-indents: 15px;
+$indents-s: 10px;
+$indents-m: 30px;
+$indents-l: 50px;
+$indents-xl: 100px;
+
+/// Icons.
+$theme-icon-size: 40px;
+$theme-icon-font-size: 18px;
+
+/// Radius.
+$default-radius-round: 50%;
+
+$theme-white: #ffffff;
+$theme-dark: #343434;
+$theme-black: #000000;
+$theme-green: #31948b;
+$theme-green-light: #46cec1;
+$theme-transparent: transparent;
+
+// Forms
+$buttons--colors: (
+  (positive: $theme-green)
+);

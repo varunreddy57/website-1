@@ -1,0 +1,23 @@
+section#what.section
+  .container
+    h2 What is Beetbox?
+    p A VM for local L*MP development, built with Packer, Vagrant + Ansible
+    p Beetbox is essentially a pre-provisioned version of&nbsp;
+      a(href='http://www.drupalvm.com/') Drupal VM
+      |  mainly to speed up initial virtual machine build time, but also to reduce the size of each VM by leveraging&nbsp;
+      a(href='https://www.hashicorp.com/blog/vagrant-1-8.html') linked clones
+      | .
+    p Whilst it contains a set of default feature configuration, it is extremely extensible and almost anything can be overridden/extended with a simple YAML config file.
+    p It is designed to have an instance (VM) per project and be integrated into a VCS like git, so that configuration can be easily shared within a team and a setup of a new project should be as simple as&nbsp;
+      kbd git clone ...; vagrant up
+      | .
+    p This particular project contains the plumbing to manage the automated build of the pre-provisioned Vagrant base box, so almost all functionality is provided by ansible roles external to this project.
+    h3 What's different about this project?
+    ul
+      li It's a composer plugin which automatically creates a Vagrantfile.
+      li You only add config to your project and don't need to manage a fork of the whole provisioning system.
+      li It uses a pre-provisioned base box so it’s much faster to provision.
+      li Each new version of the box gets published to Atlas only if all roles are provisioned making the box always stable.
+      li With linked clones each VM is a small clone of a single master.
+      li You can reuse the same provisioning system for a CI environment.
+      li Minimal host machine dependencies.

@@ -1,0 +1,35 @@
+section#faq.section
+  .container
+    h2 FAQ
+  .container
+    #accordion.panel-group(aria-multiselectable='true' role='tablist')
+      - var num1 = 1
+      .panel.panel-default
+        .panel-heading(role='tab' id='panel-title-' + num1)
+          a(role='button' data-toggle='collapse' data-parent='#accordion' href='#panel-' + num1 aria-controls='panel-' + num1)
+            | How to map a custom directory?
+        .panel-collapse.collapse(role='tabpanel' aria-labelledby='panel-title-' + num1 id='panel-' + num1)
+          .panel-body
+            p The idea is to symlink anything inside of {{ beet_base }} into the desired location.
+            p Create a custom task in&nbsp;
+              kbd .beetbox/tasks/post/dirs.yml
+            pre
+              | symlinks:
+              |   - src: '{{ beet_base }}/.data'
+              |     link: /var/lib/elasticsearch
+              |     force: yes
+      - var num2 = 2
+      .panel.panel-default
+        .panel-heading(role='tab' id='panel-title-' + num2)
+          a(role='button' data-toggle='collapse' data-parent='#accordion' href='#panel-' + num2 aria-controls='panel-' + num2)
+            | How to run a custom script on startup or provision?
+        .panel-collapse.collapse(role='tabpanel' aria-labelledby='hpanel-title-' + num2 id='panel-' + num2)
+          .panel-body
+            p Create a custom task in&nbsp;
+              kbd .beetbox/tasks/post/init.yml
+            pre
+              | - name: Runs init tasks.
+              |   command: somescript.sh
+              |   args:
+              |     chdir: '{{ beet_base }}'
+              |   become: no

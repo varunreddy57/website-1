@@ -1,0 +1,15 @@
+.navbar-logo {
+  height: $navbar-height - 20px;
+  &-wrapper {
+    display: block;
+    float: left;
+    padding: $panel-heading-padding;
+    &--left {
+      margin-right: -#{$panel-body-padding};
+      @media (min-width: $screen-sm-min) {
+        margin-right: 0;
+        margin-left: -#{$panel-body-padding};
+      }
+    }
+  }
+}

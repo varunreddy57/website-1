@@ -1,0 +1,53 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: $font-size-base;
+}
+
+body {
+  position: relative;
+  font-family: $default-font-family;
+  font-size: $default-font-size;
+  font-weight: 400;
+  line-height: $default-line-height;
+}
+
+.section {
+  padding: $navbar-height 0;
+  margin: 0;
+}
+
+footer {
+  margin: $panel-heading-padding;
+}
+
+.img-respons {
+  max-width: 100%;
+  display: inline-block;
+}
+
+.vertical-spacing {
+  margin: $panel-heading-padding;
+}
+
+kbd a {
+  color: $kbd-color;
+  &:hover {
+    color: $kbd-color;
+  }
+}
+
+.well {
+  border-radius: 0;
+  margin-bottom: 0;
+}

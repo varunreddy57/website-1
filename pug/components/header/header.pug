@@ -1,0 +1,36 @@
+nav.navbar.navbar-default.navbar-fixed-top
+  .container-fluid
+    .navbar-header
+      button(type='button' data-toggle='collapse' data-target='#bs-example-navbar-collapse-1').navbar-toggle.collapsed
+        span.sr-only Toggle navigation.
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a(href='/').navbar-logo-wrapper.navbar-logo-wrapper--left
+        img(src='images/logo-beetbox.svg').navbar-logo
+      a(href='/').navbar-brand Beetbox
+
+    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+      ul.nav.navbar-nav
+        li
+          a(href='#what' data-toggle='tooltip' data-placement='bottom' title='What is it Beetbox')
+            | What
+        li
+          a(href='#how' data-toggle='tooltip' data-placement='bottom' title='How can you use Beetbox')
+            | How
+        li
+          a(href='#faq' data-toggle='tooltip' data-placement='bottom' title='Frequently Asked Questions')
+            | FAQ
+
+      ul.nav.navbar-nav.navbar-right
+        li
+          a(href='https://github.com/beetboxvm/beetbox' data-toggle='tooltip' data-placement='bottom' title='We are on GitHub')
+            i(aria-hidden='true').fa.fa-lg.fa-github
+            |
+            | GitHub
+        li
+          a(href='https://packagist.org/packages/beet/box' data-toggle='tooltip' data-placement='bottom' title='We are on Packagist')
+            | Packagist
+        li
+          a(href='http://beetbox.readthedocs.io/en/latest/' data-toggle='tooltip' data-placement='bottom' title='Documentation about Beetbox')
+            | Docs

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Beetbox - a pre-provisioned L*MP stack</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta keywords="">
+    <meta description="">
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/style.min.css">
+  </head>
+</html>
+<body>
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"><span class="sr-only">Toggle navigation.</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button><a class="navbar-logo-wrapper navbar-logo-wrapper--left" href="/"><img class="navbar-logo" src="images/logo-beetbox.svg"></a><a class="navbar-brand" href="/">Beetbox</a>
+      </div>
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav">
+          <li><a href="#what" data-toggle="tooltip" data-placement="bottom" title="What is it Beetbox">What</a></li>
+          <li><a href="#how" data-toggle="tooltip" data-placement="bottom" title="How can you use Beetbox">How</a></li>
+          <li><a href="#faq" data-toggle="tooltip" data-placement="bottom" title="Frequently Asked Questions">FAQ</a></li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="https://github.com/beetboxvm/beetbox" data-toggle="tooltip" data-placement="bottom" title="We are on GitHub"><i class="fa fa-lg fa-github" aria-hidden="true"></i>
+              
+              GitHub</a></li>
+          <li><a href="https://packagist.org/packages/beet/box" data-toggle="tooltip" data-placement="bottom" title="We are on Packagist">Packagist</a></li>
+          <li><a href="http://beetbox.readthedocs.io/en/latest/" data-toggle="tooltip" data-placement="bottom" title="Documentation about Beetbox">Docs</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <section class="section" id="what">
+    <div class="container">
+      <h2>What is Beetbox?</h2>
+      <p>A VM for local L*MP development, built with Packer, Vagrant + Ansible</p>
+      <p>Beetbox is essentially a pre-provisioned version of&nbsp;<a href="http://www.drupalvm.com/">Drupal VM</a> mainly to speed up initial virtual machine build time, but also to reduce the size of each VM by leveraging&nbsp;<a href="https://www.hashicorp.com/blog/vagrant-1-8.html">linked clones</a>.</p>
+      <p>Whilst it contains a set of default feature configuration, it is extremely extensible and almost anything can be overridden/extended with a simple YAML config file.</p>
+      <p>It is designed to have an instance (VM) per project and be integrated into a VCS like git, so that configuration can be easily shared within a team and a setup of a new project should be as simple as&nbsp;<kbd>git clone ...; vagrant up</kbd>.</p>
+      <p>This particular project contains the plumbing to manage the automated build of the pre-provisioned Vagrant base box, so almost all functionality is provided by ansible roles external to this project.</p>
+      <h3>What's different about this project?</h3>
+      <ul>
+        <li>It's a composer plugin which automatically creates a Vagrantfile.</li>
+        <li>You only add config to your project and don't need to manage a fork of the whole provisioning system.</li>
+        <li>It uses a pre-provisioned base box so it’s much faster to provision.</li>
+        <li>Each new version of the box gets published to Atlas only if all roles are provisioned making the box always stable.</li>
+        <li>With linked clones each VM is a small clone of a single master.</li>
+        <li>You can reuse the same provisioning system for a CI environment.</li>
+        <li>Minimal host machine dependencies.</li>
+      </ul>
+    </div>
+  </section>
+  <section class="section-video well">
+    <div class="video-iframe-wrapper">
+      <iframe src="https://www.youtube.com/embed/Ff7dEadrY18" frameborder="0" allowfullscreen></iframe>
+    </div>
+  </section>
+  <section class="section" id="how">
+    <div class="container">
+      <h2>How to use Beetbox?</h2>
+      <h3>Requirements</h3>
+      <ul>
+        <li><a href="https://getcomposer.org/download/">Composer</a></li>
+        <li><a href="https://www.vagrantup.com/">
+            Vagrant >= 1.8</a></li>
+        <li><a href="https://www.virtualbox.org/">VirtualBox</a></li>
+      </ul>
+      <ul>
+        <li><a href="https://github.com/cogitatio/vagrant-hostsupdater">Vagrant Hostsupdater</a></li>
+      </ul>
+      <pre>vagrant plugin install vagrant-hostsupdater</pre>
+      <ul>
+        <li><a href="https://github.com/oscar-stack/vagrant-auto_network">Vagrant Auto-network</a></li>
+      </ul>
+      <pre>vagrant plugin install vagrant-hostsupdater</pre>
+      <h3>Quickstart</h3>
+      <pre>composer require --dev beet/box
+vagrant up</pre>
+      <p>This will automatically generate a Vagrantfile and the .beetbox directory, which will contain a config.yml file used to configure overrides.</p>
+      <p>You can see some examples in&nbsp;<kbd><a href="https://github.com/beetboxvm/beetbox/blob/master/.beetbox/config.yml">config.yml</a></kbd></p>
+      <h3>Updating</h3>
+      <pre>composer update beet/box</pre>
+      <p>Version constraints should automatically keep you to the same minor release.&nbsp;<kbd>(0.0.x)</kbd> However, you may need to update your configuation when upgrading minor releases.&nbsp;<kbd>(0.x.0)</kbd> See the release notes for more information.</p>
+    </div>
+  </section>
+  <section class="section jumbotron" id="why">
+    <div class="container">
+      <h2>Why use Beetbox?</h2>
+      <div class="row text-center">
+        <div class="col-xs-12 col-md-4"><img class="img-respons vertical-spacing" src="images/logo-speed.svg" alt="Fast speed">
+          <h4>Fast speed</h4>
+        </div>
+        <div class="col-xs-12 col-md-4"><img class="img-respons vertical-spacing" src="images/logo-composer.svg" alt="Use composer">
+          <h4>Use composer</h4>
+        </div>
+        <div class="col-xs-12 col-md-4"><img class="img-respons vertical-spacing" src="images/logo-yaml.svg" alt="Simple config">
+          <h4>Simple config</h4>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="section" id="faq">
+    <div class="container">
+      <h2>FAQ</h2>
+    </div>
+    <div class="container">
+      <div class="panel-group" id="accordion" aria-multiselectable="true" role="tablist">
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="panel-title-1"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#panel-1" aria-controls="panel-1">How to map a custom directory?</a></div>
+          <div class="panel-collapse collapse" role="tabpanel" aria-labelledby="panel-title-1" id="panel-1">
+            <div class="panel-body">
+              <p>The idea is to symlink anything inside of {{ beet_base }} into the desired location.</p>
+              <p>Create a custom task in&nbsp;<kbd>.beetbox/tasks/post/dirs.yml</kbd></p>
+              <pre>symlinks:
+  - src: '{{ beet_base }}/.data'
+    link: /var/lib/elasticsearch
+    force: yes</pre>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading" role="tab" id="panel-title-2"><a role="button" data-toggle="collapse" data-parent="#accordion" href="#panel-2" aria-controls="panel-2">How to run a custom script on startup or provision?</a></div>
+          <div class="panel-collapse collapse" role="tabpanel" aria-labelledby="hpanel-title-2" id="panel-2">
+            <div class="panel-body">
+              <p>Create a custom task in&nbsp;<kbd>.beetbox/tasks/post/init.yml</kbd></p>
+              <pre>- name: Runs init tasks.
+  command: somescript.sh
+  args:
+    chdir: '{{ beet_base }}'
+  become: no</pre>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script>window.jQuery || document.write('<script src="js/vendors/jquery.min.js"><\/script>');</script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+  <script src="vendors/bootstrap-sass/assets/javascripts/bootstrap.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+  <script src="js/scripts.min.js"></script>
+  <footer>
+    <div class="text-center"><a href="https://github.com/integratedexperts/beetbox-web"><i class="fa fa-lg fa-github" aria-hidden="true"></i>
+        
+        Suggest edits to this page on GitHub</a></div>
+  </footer>
+</body>
