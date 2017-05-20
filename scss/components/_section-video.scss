@@ -1,12 +1,16 @@
 .section-video {
-  padding-top: $panel-body-padding;
+  padding: $panel-body-padding 0;
 
   .video-iframe-wrapper {
-    width: 533px;
-    height: 400px;
+    width: 100%;
+    max-width: 720px;
     position: relative;
     margin-left: auto;
     margin-right: auto;
+  }
+
+  .full-screen-video {
+    position: relative;
 
     iframe {
       position: absolute;
